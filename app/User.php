@@ -41,7 +41,7 @@ class User extends Authenticatable
      * このユーザが所有する投稿。(Takelistモデルとの関係を定義)
      */
      
-    public function microposts()
+    public function tasks()
     {
         return $this->hasMany(Tasklist::class);
     }
