@@ -38,11 +38,20 @@ class User extends Authenticatable
     ];
     
     /**
-     * このユーザが所有する投稿。(Takelistモデルとの関係を定義)
+     * このユーザが所有する投稿。(Tasklistモデルとの関係を定義)
      */
      
     public function tasks()
     {
-        return $this->hasMany(Tasklist::class);
+        return $this->hasMany(Task::class);
     }
+    
+    /**
+     * このユーザに関係するモデルの件数をロードする。
+     */
+     
+     public function loadRelationCounts()
+     {
+         $this->loadCount('tasklist');
+     }
 }
