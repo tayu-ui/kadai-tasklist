@@ -145,7 +145,7 @@ class TasksController extends Controller
         $task->save();
         
         // トップページへリダイレクトさせる
-        return back();
+        return redirect('/');
     }
 
     /**
