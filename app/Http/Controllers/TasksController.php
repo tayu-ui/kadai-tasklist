@@ -139,10 +139,13 @@ class TasksController extends Controller
         
         // idの値でタスクを検索して取得
         $task = Task::findOrFail($id);
-        // タスクを更新
+        
+        // 認証済みユーザがそのタスクの所有者であればタスク更新処理実施
+        if(\Auth::id() === $task->user_id) {
         $task->status = $request->status; //　追加
         $task->content = $request->content;
         $task->save();
+        }
         
         // トップページへリダイレクトさせる
         return redirect('/');
